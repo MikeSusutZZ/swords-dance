@@ -3,6 +3,9 @@ const { generateDeck, pickRandomCards } = require('./deck')
 const app = express();
 const port = 3000;
 
+let turn = Math.ceil(Math.random() * 2);
+
+
 // Function to generate the deck of cards
 const deck = generateDeck()
 
@@ -14,7 +17,9 @@ app.get('/deck', (req, res) => {
 
 app.get('/draw', (req, res) => {
     const randomCards = pickRandomCards(deck, 5);
-    res.json(randomCards);
+    res.json({"cards": randomCards, "turn": turn});
+    turn++;
+    if (turn > 2) turn = 1;
   });
 
 app.listen(port, () => {
