@@ -28,7 +28,8 @@ app.get('/turn', (req, res) => {
         turn++;
         if (turn > 2) turn = 1;
         hand = pickRandomCards(deck, 5);
-    }
+        turn_check= false
+    } else turn_check = true
   });
 
 app.get('/hand', (req, res) => {
