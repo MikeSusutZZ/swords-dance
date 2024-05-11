@@ -3,7 +3,7 @@ const { generateDeck, pickRandomCards } = require('./deck')
 const app = express();
 const port = process.env.PORT || 3000;
 
-let hand = pickRandomCards(deck, 5);
+
 
 let turn = Math.ceil(Math.random() * 2);
 
@@ -12,6 +12,7 @@ let turn_check = false;
 
 // Function to generate the deck of cards
 const deck = generateDeck()
+let hand = pickRandomCards(deck, 5);
 
 app.get('/', (req, res) => {
     res.send('Hello, World!');
@@ -19,7 +20,6 @@ app.get('/', (req, res) => {
 
 // Endpoint to get the deck of cards
 app.get('/deck', (req, res) => {
-  const deck = generateDeck();
   res.json(deck);
 });
 
