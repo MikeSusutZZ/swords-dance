@@ -9,6 +9,10 @@ let turn = Math.ceil(Math.random() * 2);
 // Function to generate the deck of cards
 const deck = generateDeck()
 
+app.get('/', (req, res) => {
+    res.send('Hello, World!');
+  });
+
 // Endpoint to get the deck of cards
 app.get('/deck', (req, res) => {
   const deck = generateDeck();
